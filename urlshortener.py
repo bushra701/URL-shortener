@@ -1,14 +1,12 @@
 import requests
 
-def urlshortener(originallink):
-    apikey = '083228e6811fdcc9e32843c5b8a75e52'
+def urlshortener(originallink, apikey):
     baseurl = 'https://cutt.ly/api/api.php'
 
-    
     payload = {'key': apikey, 'short': originallink}
     
     try:
-        
+       
         response = requests.get(baseurl, params=payload)
         data = response.json()
 
@@ -22,6 +20,8 @@ def urlshortener(originallink):
         print(f"An error occurred: {e}")
 
 
-inp = input('Enter a link: ')
-urlshortener(inp)
+apikey = input('Enter your Cutt.ly API key: ')
 
+
+inp = input('Enter a link to shorten: ')
+urlshortener(inp, apikey)
